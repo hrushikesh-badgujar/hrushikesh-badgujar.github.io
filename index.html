@@ -28,9 +28,9 @@
       --accent: #00c8ff;
       --accent2: #00eaff;
       --accent3: #ff4d6d;
-      --text: #b8e8f8;
-      --muted: #2e6a88;
-      --muted2: #1a4560;
+      --text: #ddf2fc;
+      --muted: #5a9ab8;
+      --muted2: #2e6a88;
       --nav-bg: rgba(5, 10, 15, 0.85);
       --matrix-fade: rgba(2,8,16,0.05);
       --mono: 'JetBrains Mono', monospace;
@@ -47,9 +47,9 @@
       --accent: #0077aa;
       --accent2: #0099cc;
       --accent3: #cc2244;
-      --text: #0d2233;
-      --muted: #4a7a99;
-      --muted2: #7aaabf;
+      --text: #07151f;
+      --muted: #2d5f7a;
+      --muted2: #4a7a99;
       --nav-bg: rgba(240, 244, 248, 0.88);
       --matrix-fade: rgba(240,244,248,0.08);
     }
@@ -1167,7 +1167,7 @@
     </section>
 
     <footer>
-      <span>© 2025 Hrushikesh Badgujar</span>
+      <span>© <span id="copy-year"></span> Hrushikesh Badgujar</span>
       <span>SOC Analyst · Threat Intelligence · Incident Response</span>
     </footer>
 
@@ -1230,6 +1230,7 @@
     window.addEventListener('resize', init);
     setInterval(draw, 45);
 
+    document.getElementById("copy-year").textContent = new Date().getFullYear();
     // Theme toggle
     const themeToggle = document.getElementById('themeToggle');
     const root = document.documentElement;
