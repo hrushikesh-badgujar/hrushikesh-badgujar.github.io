@@ -791,6 +791,62 @@
 
     :root[data-theme="light"] .icon-sun { display: block; }
     :root[data-theme="light"] .icon-moon { display: none; }
+
+    .stat-link {
+      text-decoration: none;
+    }
+
+    .h3adsec-sub {
+      margin-top: 3rem;
+    }
+
+    .subsection-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .subsection-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+
+    .subsection-link {
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+
+    .subsection-link:hover {
+      opacity: 0.7;
+    }
+
+    .project-card-platform {
+      margin-bottom: 1.5rem;
+      border-color: rgba(0, 200, 255, 0.25);
+    }
+
+    .project-card-platform::before {
+      opacity: 1;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1.25rem;
+      font-size: 11px;
+    }
   </style>
 </head>
 
@@ -806,6 +862,7 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#certifications">Certs</a></li>
+        <li><a href="#writing">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="icon-moon">☽</span><span class="icon-sun">☀</span></button>
@@ -827,10 +884,10 @@
             <div class="stat-num">6+</div>
             <div class="stat-label">Certifications</div>
           </div>
-          <div class="stat-item">
-            <div class="stat-num">4</div>
-            <div class="stat-label">Key Projects</div>
-          </div>
+          <a href="https://h3ad-sec.github.io" target="_blank" class="stat-item stat-link">
+            <div class="stat-num" style="font-size:1.3rem;letter-spacing:0.03em;">H3AD-SEC</div>
+            <div class="stat-label">Open-Source SOC Toolkit ↗</div>
+          </a>
         </div>
         <div class="hero-cta">
           <a href="#experience" class="btn btn-primary">View Experience ↓</a>
@@ -1047,6 +1104,86 @@
           </div>
         </div>
       </div>
+
+      <div class="h3adsec-sub">
+        <div class="subsection-header">
+          <span class="subsection-label">// H3AD-SEC Platform</span>
+          <a href="https://h3ad-sec.github.io" target="_blank" class="subsection-link">h3ad-sec.github.io ↗</a>
+        </div>
+
+        <div class="project-card project-card-platform">
+          <div class="project-num">// PLATFORM · OPEN-SOURCE</div>
+          <div class="project-name">H3AD-SEC — Open-Source SOC Analyst Platform</div>
+          <p class="project-desc">Multi-module security platform built and deployed independently on GitHub Pages — threat
+            intelligence enrichment (VERDIKT, X-VERDIKT), investigation pivoting (PIVEX), hypothesis management (HYPOS),
+            and recon tools. Each module is a standalone tool targeting a distinct SOC analyst workflow.</p>
+          <div class="project-tags" style="margin-bottom:1.25rem;">
+            <span class="tag accent">Threat Intel</span>
+            <span class="tag accent">SOC Tools</span>
+            <span class="tag accent">Detection Engineering</span>
+            <span class="tag">IOC Enrichment</span>
+            <span class="tag">Pivot Mapping</span>
+            <span class="tag">Threat Hunting</span>
+          </div>
+          <div class="project-links">
+            <a href="https://h3ad-sec.github.io" target="_blank" class="btn btn-primary btn-sm">Live Platform ↗</a>
+          </div>
+        </div>
+
+        <div class="projects-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="project-card">
+            <div class="project-num">// X-VERDIKT · LIVE</div>
+            <div class="project-name">X-VERDIKT — Deep IOC Enrichment</div>
+            <p class="project-desc">Multi-source threat intelligence enrichment for IP, domain, URL, and hash IOCs across
+              11 parallel TI sources. Managed-mode backend via Vercel. Exports to CSV, JSON, Markdown, and Excel.</p>
+            <div class="project-tags" style="margin-bottom:1.25rem;">
+              <span class="tag accent">VirusTotal</span>
+              <span class="tag accent">AbuseIPDB</span>
+              <span class="tag">OTX</span>
+              <span class="tag">ThreatFox</span>
+              <span class="tag">Bulk IOC Analysis</span>
+              <span class="tag">Multi-Format Export</span>
+            </div>
+            <div class="project-links">
+              <a href="https://h3ad-sec.github.io/X-VERDIKT/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-num">// PIVEX · LIVE</div>
+            <div class="project-name">PIVEX — SOC Pivot Investigation Graph</div>
+            <p class="project-desc">Interactive force-directed graph with 36 artifact types and 168+ edges for mapping
+              investigation pivot paths. MITRE ATT&amp;CK integrated, pivot path builder with step-by-step CSV export.</p>
+            <div class="project-tags" style="margin-bottom:1.25rem;">
+              <span class="tag accent">Graph Visualization</span>
+              <span class="tag accent">MITRE ATT&amp;CK</span>
+              <span class="tag">Threat Hunting</span>
+              <span class="tag">Pivot Path Builder</span>
+              <span class="tag">Investigation</span>
+            </div>
+            <div class="project-links">
+              <a href="https://h3ad-sec.github.io/PIVEX/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-num">// HYPOS · LIVE</div>
+            <div class="project-name">HYPOS — Threat Hunting Hypothesis Platform</div>
+            <p class="project-desc">Structured threat hunting hypothesis management — matrix view of hunting coverage by
+              MITRE tactic, curated hypothesis DB with tag search and analytics for hypothesis-driven SOC hunting cycles.</p>
+            <div class="project-tags" style="margin-bottom:1.25rem;">
+              <span class="tag accent">Threat Hunting</span>
+              <span class="tag accent">MITRE ATT&amp;CK</span>
+              <span class="tag">Hypothesis DB</span>
+              <span class="tag">Hunt Coverage Matrix</span>
+              <span class="tag">Analytics</span>
+            </div>
+            <div class="project-links">
+              <a href="https://h3ad-sec.github.io/HYPOS/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="certifications">
@@ -1147,9 +1284,61 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="writing">
       <div class="section-header">
         <div class="section-num">06</div>
+        <div class="section-title-group">
+          <div class="section-tag">Published</div>
+          <div class="section-title">Writing</div>
+        </div>
+        <a href="https://medium.com/@hrushikeshbadgujar" target="_blank" class="subsection-link" style="margin-left:auto;">medium.com/@hrushikeshbadgujar ↗</a>
+      </div>
+      <div class="projects-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="project-card">
+          <div class="project-num">// 01 · Medium</div>
+          <div class="project-name">What is IDS (Intrusion Detection System) & How it Works</div>
+          <p class="project-desc">A breakdown of intrusion detection systems — architecture, detection methods, signature vs anomaly-based approaches, and how IDS fits into a layered defense strategy.</p>
+          <div class="project-tags" style="margin-bottom:1.25rem;">
+            <span class="tag accent">IDS</span>
+            <span class="tag">Network Security</span>
+            <span class="tag">Blue Team</span>
+          </div>
+          <div class="project-links">
+            <a href="https://medium.com/@hrushikeshbadgujar/what-is-ids-intrusion-detection-system-how-it-works-732d81a13fb5" target="_blank" class="btn btn-primary btn-sm">Read on Medium ↗</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">// 02 · Medium</div>
+          <div class="project-name">Demystifying Firewalls — Types, Rule Parameters & Real-World Examples</div>
+          <p class="project-desc">Explores firewall types (packet filter, stateful, NGFW), rule parameter logic, and real-world configuration examples to show how firewalls enforce network security policy.</p>
+          <div class="project-tags" style="margin-bottom:1.25rem;">
+            <span class="tag accent">Firewalls</span>
+            <span class="tag">Network Security</span>
+            <span class="tag">NGFW</span>
+          </div>
+          <div class="project-links">
+            <a href="https://medium.com/@hrushikeshbadgujar/demystifying-firewalls-exploring-types-rule-parameters-and-real-world-examples-548602ac9958" target="_blank" class="btn btn-primary btn-sm">Read on Medium ↗</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">// 03 · Medium</div>
+          <div class="project-name">IPS Unraveled — Decoding Cyber Protection</div>
+          <p class="project-desc">Deep dive into Intrusion Prevention Systems — how IPS differs from IDS, inline blocking mechanisms, detection techniques, and its role in active threat mitigation.</p>
+          <div class="project-tags" style="margin-bottom:1.25rem;">
+            <span class="tag accent">IPS</span>
+            <span class="tag">Threat Mitigation</span>
+            <span class="tag">Blue Team</span>
+          </div>
+          <div class="project-links">
+            <a href="https://medium.com/@hrushikeshbadgujar/ips-unraveled-decoding-cyber-protection-58648581edbe" target="_blank" class="btn btn-primary btn-sm">Read on Medium ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-num">07</div>
         <div class="section-title-group">
           <div class="section-tag">Reach out</div>
           <div class="section-title">Contact</div>
