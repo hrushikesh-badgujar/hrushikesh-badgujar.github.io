@@ -4,6 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="version" content="20260517b">
   <title>Hrushikesh Badgujar — Cybersecurity Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -214,6 +218,7 @@
       display: flex;
       gap: 3rem;
       margin-bottom: 3rem;
+      flex-wrap: wrap;
     }
 
     .stat-num {
@@ -317,7 +322,7 @@
 
     .skills-matrix {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
@@ -490,9 +495,18 @@
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
       gap: 1.5rem;
     }
+
+    .grid-3col {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
 
     .project-card {
       background: var(--card);
@@ -556,7 +570,7 @@
 
     .certs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
       gap: 1rem;
     }
 
@@ -612,7 +626,7 @@
 
     .edu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
       gap: 1.5rem;
     }
 
@@ -737,6 +751,12 @@
       animation-delay: 0.5s;
     }
 
+    @media (max-width: 900px) {
+      .grid-3col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 768px) {
       nav {
         padding: 1rem 1.5rem;
@@ -762,6 +782,85 @@
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+      }
+
+      .grid-3col,
+      .grid-2col {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      .section-header {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .section-header .subsection-link {
+        margin-left: 0 !important;
+        width: 100%;
+      }
+
+      .h3adsec-sub .subsection-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-box {
+        padding: 2rem 1.5rem;
+      }
+
+      .achieve-row {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .hero {
+        padding: 5rem 1rem 2rem;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .skills-matrix {
+        grid-template-columns: 1fr;
+      }
+
+      .certs-grid,
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .contact-links .btn {
+        text-align: center;
+        justify-content: center;
       }
     }
 
@@ -1114,9 +1213,7 @@
         <div class="project-card project-card-platform">
           <div class="project-num">// PLATFORM · OPEN-SOURCE</div>
           <div class="project-name">H3AD-SEC — Open-Source SOC Analyst Platform</div>
-          <p class="project-desc">Multi-module security platform built and deployed independently on GitHub Pages — threat
-            intelligence enrichment (VERDIKT, X-VERDIKT), investigation pivoting (PIVEX), hypothesis management (HYPOS),
-            and recon tools. Each module is a standalone tool targeting a distinct SOC analyst workflow.</p>
+          <p class="project-desc">Multi-module security platform built and deployed on GitHub Pages — threat intelligence enrichment (X-VERDIKT, PARSE-X, DNSCOPE), investigation pivoting (PIVEX), and hypothesis management (HYPOS). Each module is a standalone tool targeting a distinct analyst workflow.</p>
           <div class="project-tags" style="margin-bottom:1.25rem;">
             <span class="tag accent">Threat Intel</span>
             <span class="tag accent">SOC Tools</span>
@@ -1124,65 +1221,105 @@
             <span class="tag">IOC Enrichment</span>
             <span class="tag">Pivot Mapping</span>
             <span class="tag">Threat Hunting</span>
+            <span class="tag">Recon</span>
           </div>
           <div class="project-links">
             <a href="https://h3ad-sec.github.io" target="_blank" class="btn btn-primary btn-sm">Live Platform ↗</a>
           </div>
         </div>
 
-        <div class="projects-grid" style="grid-template-columns:repeat(3,1fr);">
-          <div class="project-card">
-            <div class="project-num">// X-VERDIKT · LIVE</div>
-            <div class="project-name">X-VERDIKT — Deep IOC Enrichment</div>
-            <p class="project-desc">Multi-source threat intelligence enrichment for IP, domain, URL, and hash IOCs across
-              11 parallel TI sources. Managed-mode backend via Vercel. Exports to CSV, JSON, Markdown, and Excel.</p>
-            <div class="project-tags" style="margin-bottom:1.25rem;">
-              <span class="tag accent">VirusTotal</span>
-              <span class="tag accent">AbuseIPDB</span>
-              <span class="tag">OTX</span>
-              <span class="tag">ThreatFox</span>
-              <span class="tag">Bulk IOC Analysis</span>
-              <span class="tag">Multi-Format Export</span>
-            </div>
-            <div class="project-links">
-              <a href="https://h3ad-sec.github.io/X-VERDIKT/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
-            </div>
+        <div style="margin-top:2.5rem;">
+          <div class="subsection-header">
+            <span class="subsection-label">// H3AD-X · Threat Intelligence</span>
+            <a href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" class="subsection-link">H3AD-X ↗</a>
           </div>
+          <div class="projects-grid grid-3col">
+            <div class="project-card">
+              <div class="project-num">// X-VERDIKT · LIVE</div>
+              <div class="project-name">X-VERDIKT — Deep IOC Enrichment</div>
+              <p class="project-desc">Single-IOC deep enrichment across 11 parallel TI sources for IPs, domains, URLs, and hashes. Managed backend via Vercel. Exports to CSV, JSON, Markdown, and Excel.</p>
+              <div class="project-tags" style="margin-bottom:1.25rem;">
+                <span class="tag accent">VirusTotal</span>
+                <span class="tag accent">AbuseIPDB</span>
+                <span class="tag">11 Sources</span>
+                <span class="tag">Multi-Export</span>
+              </div>
+              <div class="project-links">
+                <a href="https://h3ad-sec.github.io/X-VERDIKT/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+              </div>
+            </div>
 
-          <div class="project-card">
-            <div class="project-num">// PIVEX · LIVE</div>
-            <div class="project-name">PIVEX — SOC Pivot Investigation Graph</div>
-            <p class="project-desc">Interactive force-directed graph with 36 artifact types and 168+ edges for mapping
-              investigation pivot paths. MITRE ATT&amp;CK integrated, pivot path builder with step-by-step CSV export.</p>
-            <div class="project-tags" style="margin-bottom:1.25rem;">
-              <span class="tag accent">Graph Visualization</span>
-              <span class="tag accent">MITRE ATT&amp;CK</span>
-              <span class="tag">Threat Hunting</span>
-              <span class="tag">Pivot Path Builder</span>
-              <span class="tag">Investigation</span>
+            <div class="project-card">
+              <div class="project-num">// PARSE-X · LIVE</div>
+              <div class="project-name">PARSE-X — Artifact Extractor</div>
+              <p class="project-desc">Client-side extraction of 18 IOC types from raw text — IPs, domains, hashes, URLs, emails, CVEs, ATT&amp;CK IDs, registry keys, paths, and more. Zero backend. CSV/JSON/MD export.</p>
+              <div class="project-tags" style="margin-bottom:1.25rem;">
+                <span class="tag accent">18 IOC Types</span>
+                <span class="tag">Client-Side</span>
+                <span class="tag">ATT&amp;CK</span>
+                <span class="tag">CVE</span>
+              </div>
+              <div class="project-links">
+                <a href="https://h3ad-sec.github.io/PARSE-X/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+              </div>
             </div>
-            <div class="project-links">
-              <a href="https://h3ad-sec.github.io/PIVEX/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
-            </div>
-          </div>
 
-          <div class="project-card">
-            <div class="project-num">// HYPOS · LIVE</div>
-            <div class="project-name">HYPOS — Threat Hunting Hypothesis Platform</div>
-            <p class="project-desc">Structured threat hunting hypothesis management — matrix view of hunting coverage by
-              MITRE tactic, curated hypothesis DB with tag search and analytics for hypothesis-driven SOC hunting cycles.</p>
-            <div class="project-tags" style="margin-bottom:1.25rem;">
-              <span class="tag accent">Threat Hunting</span>
-              <span class="tag accent">MITRE ATT&amp;CK</span>
-              <span class="tag">Hypothesis DB</span>
-              <span class="tag">Hunt Coverage Matrix</span>
-              <span class="tag">Analytics</span>
-            </div>
-            <div class="project-links">
-              <a href="https://h3ad-sec.github.io/HYPOS/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+            <div class="project-card">
+              <div class="project-num">// DNSCOPE · LIVE</div>
+              <div class="project-name">DNSCOPE — Infra Mapper</div>
+              <p class="project-desc">Domain and IP infrastructure mapping across 8 sources — ASN, passive DNS, certificate transparency, subdomains, co-hosted domains, and cloud/CDN/WAF fingerprinting.</p>
+              <div class="project-tags" style="margin-bottom:1.25rem;">
+                <span class="tag accent">Passive DNS</span>
+                <span class="tag accent">Cert Transparency</span>
+                <span class="tag">Shodan</span>
+                <span class="tag">8 Sources</span>
+              </div>
+              <div class="project-links">
+                <a href="https://h3ad-sec.github.io/DNSCOPE/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+              </div>
             </div>
           </div>
         </div>
+
+        <div style="margin-top:2.5rem;">
+          <div class="subsection-header">
+            <span class="subsection-label">// H3AD-HUNT · Threat Hunting</span>
+            <a href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" class="subsection-link">H3AD-HUNT ↗</a>
+          </div>
+          <div class="projects-grid grid-2col">
+            <div class="project-card">
+              <div class="project-num">// HYPOS · LIVE</div>
+              <div class="project-name">HYPOS — Hypothesis Platform</div>
+              <p class="project-desc">Structured threat hunting hypothesis management — matrix view of hunting coverage by MITRE tactic, curated hypothesis DB with tag search and analytics for hypothesis-driven SOC hunting cycles.</p>
+              <div class="project-tags" style="margin-bottom:1.25rem;">
+                <span class="tag accent">Threat Hunting</span>
+                <span class="tag accent">MITRE ATT&amp;CK</span>
+                <span class="tag">Hypothesis DB</span>
+                <span class="tag">Analytics</span>
+              </div>
+              <div class="project-links">
+                <a href="https://h3ad-sec.github.io/HYPOS/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-num">// PIVEX · LIVE</div>
+              <div class="project-name">PIVEX — Pivot Investigation Graph</div>
+              <p class="project-desc">Interactive force-directed graph with 36 artifact types and 168+ edges for mapping investigation pivot paths. MITRE ATT&amp;CK integrated, pivot path builder with step-by-step CSV export.</p>
+              <div class="project-tags" style="margin-bottom:1.25rem;">
+                <span class="tag accent">Graph Visualization</span>
+                <span class="tag accent">MITRE ATT&amp;CK</span>
+                <span class="tag">Pivot Paths</span>
+                <span class="tag">Investigation</span>
+              </div>
+              <div class="project-links">
+                <a href="https://h3ad-sec.github.io/PIVEX/" target="_blank" class="btn btn-primary btn-sm">Launch Tool ↗</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1293,7 +1430,7 @@
         </div>
         <a href="https://medium.com/@hrushikeshbadgujar" target="_blank" class="subsection-link" style="margin-left:auto;">medium.com/@hrushikeshbadgujar ↗</a>
       </div>
-      <div class="projects-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="projects-grid grid-3col">
         <div class="project-card">
           <div class="project-num">// 01 · Medium</div>
           <div class="project-name">What is IDS (Intrusion Detection System) & How it Works</div>
@@ -1351,6 +1488,7 @@
         <div class="contact-links">
           <a href="mailto:hrushibadgujar003@gmail.com" class="btn btn-primary">hrushibadgujar003@gmail.com</a>
           <a href="https://linkedin.com/in/Hrushikesh-badgujar" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+          <a href="https://www.linkedin.com/company/h3ad-sec/" target="_blank" class="btn btn-ghost">H3AD-SEC LinkedIn ↗</a>
         </div>
       </div>
     </section>
